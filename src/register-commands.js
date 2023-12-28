@@ -32,6 +32,30 @@ const commands = [
         ]
     },
     //Slash Command Choices
+    {
+        name: '',
+        description: '',
+        options: [
+            {
+                name: '',
+                description: '',
+                type: ,
+                choices: [
+                    {
+                        name: '',
+                        value: , 
+                    },
+                    {
+                        name: '',
+                        value: , 
+                    },{
+                        name: '',
+                        value: , 
+                    },
+                ],
+            }, {}
+        ],
+    },
 ];
 
 const rest = new REST ({ version: '10' }).setToken(token);
