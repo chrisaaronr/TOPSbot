@@ -22,12 +22,26 @@ client.on('messageCreate', (message) => {
         return;
     }
     
-    if (message.content === 'hello') {
-        message.reply('Oh, hey!')
+    if (message.content === 'hello!') {
+        message.reply('oh, hello!')
     }
 });
 
-//Slash Commands
+//Slash Commands - Interactions
+client.on('interactionCreate', (interaction) => {
+    if (!interaction.isChatInputCommand()) return;
+
+    if (interaction.commandName === 'hey') {
+        interaction.reply('oh, hey!')
+    }
+
+    if (interaction.commandName === 'add') {
+        const num1 = interaction.options.get('first-number').value;
+        const num2 = interaction.options.get('second-number').value; 
+
+        interaction.reply(`The sum is ${num1 + num2}.`);
+    }
+});
 
 
 
