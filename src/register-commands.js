@@ -32,7 +32,7 @@ const commands = [
         ]
     },
     //Slash Command Choices
-    {
+/*     {
         name: '',
         description: '',
         options: [
@@ -55,6 +55,19 @@ const commands = [
                 ],
             }, {}
         ],
+    }, */
+    // Custom Embeds
+    {
+        name: 'live',
+        description: 'Sends a "Now Live!" alert to the announcement channel',
+        options: [
+            {
+                name: 'activity',
+                description: 'What are you streaming today?',
+                type: ApplicationCommandOptionType.String,
+                required: true,
+            }
+        ]
     },
 ];
 
