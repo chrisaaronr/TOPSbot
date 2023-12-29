@@ -53,12 +53,10 @@ client.on('interactionCreate', (interaction) => {
             .setThumbnail('https://i.imgur.com/R6qLfeUt.png')
             .addFields(
                 { name: 'What Are We Doing Today?', value: activity },
-            )
-            
-            ;
+            );
 
 
-        interaction.reply({ embeds: [liveEmbed]});
+        interaction.channel.send({ embeds: [liveEmbed]});
     }
 });
 
