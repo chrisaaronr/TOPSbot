@@ -33,14 +33,14 @@ client.on('interactionCreate', (interaction) => {
 
     if (interaction.commandName === 'hey') {
         interaction.reply('oh, hey!')
-    }
+    };
 
     if (interaction.commandName === 'add') {
         const num1 = interaction.options.get('first-number').value;
         const num2 = interaction.options.get('second-number').value; 
 
         interaction.reply(`The sum is ${num1 + num2}.`);
-    }
+    };
 
     if (interaction.commandName === 'live') {
         const activity = interaction.options.get('activity').value;
@@ -49,17 +49,17 @@ client.on('interactionCreate', (interaction) => {
             .setColor('Random')
             .setTitle("TOPSilog_ is Now LIVE!")
             .setURL('https://www.twitch.tv/topsilog_')
-            .setDescription('Hey, everyone! Tops is now live! Come hang out with us!')
-            .setThumbnail('https://i.imgur.com/R6qLfeUt.png')
+            .setAuthor({ name: 'BOTSilog'})
+            .setDescription('Hey, everyone! Tops is live! Come hang out with us!')
+            .setThumbnail('https://i.imgur.com/4iwovl4.jpg')
             .addFields(
-                { name: 'What Are We Doing Today?', value: activity },
+                { name: 'Games', value: activity },
             );
 
-
+        interaction.channel.send('BOTSilog here! @everyone')
         interaction.channel.send({ embeds: [liveEmbed]});
-    }
+    };
 });
-
 
 
 client.login(token);
