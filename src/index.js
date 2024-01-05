@@ -1,4 +1,4 @@
-const {Client, IntentsBitField, EmbedBuilder } = require('discord.js');
+const {Client, IntentsBitField, EmbedBuilder, ButtonBuilder, ButtonInteraction } = require('discord.js');
 require('dotenv').config();
 
 let token = process.env.TOKEN;
@@ -59,6 +59,36 @@ client.on('interactionCreate', (interaction) => {
         interaction.channel.send('BOTSilog here! @everyone')
         interaction.channel.send({ embeds: [liveEmbed]});
     };
+});
+
+//Interaction - Claim or remove roles
+client.on('interactionCreate', async (interaction) => {
+    try {
+        if (!interaction .isButton()) return;
+        await interaction.deferReply({ ephemeral: true });
+
+        const role = interaction.guild.roles.cache.get(interaction.customeId);
+        if (!role) {
+            interaction.editReply({
+            content: "Oh.  I could not find that role.",
+        })
+        return;
+        }
+
+        const hasRole = interaction.member.roles.cache.has(role.id);
+
+        if (hasRole) {
+            await interaction.member.roles.remove(role);
+            await interaction.editReply(`The role ${role} has been removed.`);
+            return;
+        }
+
+        await interaction.member.roles.add(role);
+        await interaction.editReply(`The role ${role} has been added.`);
+
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 
